@@ -1,0 +1,38 @@
+~ start
+
+if egg_status == "has":
+	Chicken: Where is my egg . . . . . . T-T
+	I have an egg.
+	- Give it
+		set egg_status = "gave"
+		There u go.
+		Chicken: Thank you so muchhh
+	- Keep it
+		Chicken: My egg . . . . . . . T-T
+elif egg_status == "gave":
+	Chicken: Really thanks from my heart and soul . . . . . .
+else: 
+	Chicken: Where is my egg . . . . . . T-T
+	Chicken: Can you help me to find my egg? T-T
+
+=> END
+
+
+~ pick_egg
+
+if egg_status == "has":
+	No more egg
+	
+	=> END
+	
+elif egg_status == "gave":
+	No more egg
+	
+	=> END
+	
+else:
+	Hey, it is an egg.
+	I think someone lost it. (Took)
+	set egg_status = "has"
+
+=> END

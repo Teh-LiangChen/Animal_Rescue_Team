@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_11"
+type="Resource"
+uid="uid://b4tghmumduoid"
+path="res://.godot/imported/npc_chicken.dialogue-73708d85463886204ef0aefa9d9ec9c5.tres"
+
+[deps]
+
+source_file="res://Dialogue/npc_chicken.dialogue"
+dest_files=["res://.godot/imported/npc_chicken.dialogue-73708d85463886204ef0aefa9d9ec9c5.tres"]
+
+[params]
+
+defaults=true

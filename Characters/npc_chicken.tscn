@@ -1,0 +1,62 @@
+[gd_scene load_steps=8 format=3 uid="uid://bogmfh1ffoxix"]
+
+[ext_resource type="Texture2D" uid="uid://gwue1hs3ugge" path="res://Art/Sprout Lands - Sprites - Basic pack/Characters/Free Chicken Sprites.png" id="1_47dkk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5tgpd"]
+size = Vector2(11, 6)
+
+[sub_resource type="Animation" id="Animation_w6u76"]
+resource_name = "idle"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lrw8e"]
+_data = {
+"idle": SubResource("Animation_w6u76")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7m3wp"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_43m5q"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_7p78q"]
+states/idle/node = SubResource("AnimationNodeAnimation_7m3wp")
+states/idle/position = Vector2(319, 100)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_43m5q")]
+
+[node name="npc_chicken" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_47dkk")
+hframes = 4
+vframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, 3)
+shape = SubResource("RectangleShape2D_5tgpd")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_lrw8e")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_lrw8e")
+}
+tree_root = SubResource("AnimationNodeStateMachine_7p78q")
+anim_player = NodePath("../AnimationPlayer")

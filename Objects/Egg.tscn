@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://by6uk1om5e36u"]
+
+[ext_resource type="Script" path="res://Objects/Egg.gd" id="1_ibmvw"]
+[ext_resource type="Texture2D" uid="uid://djsmspjd0k5po" path="res://Art/Sprout Lands - Sprites - Basic pack/Characters/Egg_And_Nest.png" id="1_oajfj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lg1ml"]
+atlas = ExtResource("1_oajfj")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_btfts"]
+atlas = ExtResource("1_oajfj")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q2s4i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lg1ml")
+}],
+"loop": true,
+"name": &"Egg",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_btfts")
+}],
+"loop": true,
+"name": &"StolenEgg",
+"speed": 0.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_frrb2"]
+radius = 8.0
+
+[node name="Egg" type="Node2D"]
+script = ExtResource("1_ibmvw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_q2s4i")
+animation = &"StolenEgg"
+
+[node name="pickable" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pickable"]
+position = Vector2(0, 3)
+shape = SubResource("CircleShape2D_frrb2")
+
+[connection signal="body_entered" from="pickable" to="." method="_on_pickable_body_entered"]
+[connection signal="body_exited" from="pickable" to="." method="_on_pickable_body_exited"]

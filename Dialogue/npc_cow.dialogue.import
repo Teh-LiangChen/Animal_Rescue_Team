@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_11"
+type="Resource"
+uid="uid://dc2fr4tt7leb1"
+path="res://.godot/imported/npc_cow.dialogue-e0c7b00dcfe8a39c935d3a8270d5ea5c.tres"
+
+[deps]
+
+source_file="res://Dialogue/npc_cow.dialogue"
+dest_files=["res://.godot/imported/npc_cow.dialogue-e0c7b00dcfe8a39c935d3a8270d5ea5c.tres"]
+
+[params]
+
+defaults=true
