@@ -1,34 +1,48 @@
-[gd_scene load_steps=7 format=3 uid="uid://by6uk1om5e36u"]
+[gd_scene load_steps=8 format=3 uid="uid://by6uk1om5e36u"]
 
 [ext_resource type="Script" path="res://Objects/Egg.gd" id="1_ibmvw"]
 [ext_resource type="Texture2D" uid="uid://djsmspjd0k5po" path="res://Art/Sprout Lands - Sprites - Basic pack/Characters/Egg_And_Nest.png" id="1_oajfj"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lg1ml"]
-atlas = ExtResource("1_oajfj")
-region = Rect2(32, 0, 16, 16)
+[sub_resource type="Animation" id="Animation_j0mau"]
+resource_name = "Egg"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StaticBody2D/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_btfts"]
-atlas = ExtResource("1_oajfj")
-region = Rect2(48, 0, 16, 16)
+[sub_resource type="Animation" id="Animation_52lqs"]
+resource_name = "StolenEgg"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StaticBody2D/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_q2s4i"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lg1ml")
-}],
-"loop": true,
-"name": &"Egg",
-"speed": 0.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_btfts")
-}],
-"loop": true,
-"name": &"StolenEgg",
-"speed": 0.0
-}]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_isgiu"]
+_data = {
+"Egg": SubResource("Animation_j0mau"),
+"StolenEgg": SubResource("Animation_52lqs")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hha7o"]
+size = Vector2(12, 6)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_frrb2"]
 radius = 8.0
@@ -36,15 +50,28 @@ radius = 8.0
 [node name="Egg" type="Node2D"]
 script = ExtResource("1_ibmvw")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_q2s4i")
-animation = &"StolenEgg"
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
 
-[node name="pickable" type="Area2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+texture = ExtResource("1_oajfj")
+hframes = 4
+frame = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="pickable"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="StaticBody2D/Sprite2D"]
+root_node = NodePath("../../..")
+libraries = {
+"": SubResource("AnimationLibrary_isgiu")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_hha7o")
+
+[node name="pickable" type="Area2D" parent="StaticBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D/pickable"]
 position = Vector2(0, 3)
 shape = SubResource("CircleShape2D_frrb2")
 
-[connection signal="body_entered" from="pickable" to="." method="_on_pickable_body_entered"]
-[connection signal="body_exited" from="pickable" to="." method="_on_pickable_body_exited"]
+[connection signal="body_entered" from="StaticBody2D/pickable" to="." method="_on_pickable_body_entered"]
+[connection signal="body_exited" from="StaticBody2D/pickable" to="." method="_on_pickable_body_exited"]

@@ -2,14 +2,13 @@ extends Node2D
 
 @onready var state = ""
 @onready var player_in_area = false
-@onready var animation = $StaticBody2D/Sprite2D/AnimationPlayer
 
 
 func _process(delta):
 	if state == "stolen":
-		animation.play("StolenEgg")
+		$AnimatedSprite2D.play("StolenEgg")
 	else:
-		animation.play("Egg")
+		$AnimatedSprite2D.play("Egg")
 		if player_in_area:
 			if Input.is_action_just_pressed("ui_accept"):
 				state = "stolen"
