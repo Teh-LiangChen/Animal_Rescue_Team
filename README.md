@@ -1,6 +1,9 @@
 First time ever making a game
+
 Start it with a simple top down game just like my childhood memory pokemon games
+
 Decided to use Godot to make it and the resources below help a lots
+
 Luckily to have a friend help me to connect with firebase
 
 Reference
