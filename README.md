@@ -8,7 +8,7 @@ Decided to use Godot to make it and the resources below help a lots
 Luckily to have a friend help me to connect with firebase
 
 ## Reference
-___________________________________
+
 Dialogue Help:
 > https://www.youtube.com/watch?v=UhPFk8FSbd8&list=PLVprdQQk8Ty6nyVB1zKoG566pHPVCdgfn&index=1&t=445s&pp=gAQBiAQB
 
