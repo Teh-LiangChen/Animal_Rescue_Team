@@ -1,4 +1,4 @@
-#Animal_Rescue_Team
+# Animal_Rescue_Team
 First time ever making a game
 
 Start it with a simple top down game just like my childhood memory pokemon games
@@ -7,7 +7,7 @@ Decided to use Godot to make it and the resources below help a lots
 
 Luckily to have a friend help me to connect with firebase
 
-##Reference
+## Reference
 ___________________________________
 Dialogue Help:
 > https://www.youtube.com/watch?v=UhPFk8FSbd8&list=PLVprdQQk8Ty6nyVB1zKoG566pHPVCdgfn&index=1&t=445s&pp=gAQBiAQB
