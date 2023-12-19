@@ -1,0 +1,188 @@
+[gd_scene load_steps=8 format=3 uid="uid://jgoe44pmsm0n"]
+
+[ext_resource type="Script" path="res://authenticationhaha.gd" id="1_lg2tg"]
+[ext_resource type="Texture2D" uid="uid://co7v26kpxhu7y" path="res://istockphoto-1333010525-612x612.jpg" id="2_soc6c"]
+[ext_resource type="FontFile" uid="uid://c604rnervbhar" path="res://dynamic-regular.ttf" id="3_d4vvj"]
+[ext_resource type="Texture2D" uid="uid://b4oho8ln5sric" path="res://blue-color-solid-background-1920x1080.png" id="4_0fkge"]
+[ext_resource type="Script" path="res://Crreateaccount.gd" id="6_gpsu5"]
+
+[sub_resource type="GDScript" id="GDScript_03sxu"]
+script/source = "extends TextureButton
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
+
+[sub_resource type="GDScript" id="GDScript_24reg"]
+script/source = "extends Label
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+
+
+
+func _on_http_request_request_completed(result, response_code, headers, body):
+	pass # Replace with function body.
+"
+
+[node name="loginscreen" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = -250.0
+offset_right = 350.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lg2tg")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+custom_minimum_size = Vector2(700, 500)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -577.0
+offset_top = -322.0
+offset_right = 574.0
+offset_bottom = 325.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_soc6c")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 88.0
+offset_top = 14.0
+offset_right = -121.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="title" type="Label" parent="NinePatchRect/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_d4vvj")
+theme_override_font_sizes/font_size = 70
+text = "Login "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/VBoxContainer"]
+custom_minimum_size = Vector2(0, 55)
+layout_mode = 2
+
+[node name="MarginContainer4" type="MarginContainer" parent="NinePatchRect/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="email title" type="Label" parent="NinePatchRect/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_d4vvj")
+theme_override_font_sizes/font_size = 35
+text = "Email"
+
+[node name="email" type="LineEdit" parent="NinePatchRect/VBoxContainer"]
+custom_minimum_size = Vector2(100, 20)
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="NinePatchRect/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="passwrd title" type="Label" parent="NinePatchRect/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_d4vvj")
+theme_override_font_sizes/font_size = 30
+text = "Password"
+
+[node name="password" type="LineEdit" parent="NinePatchRect/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer3" type="MarginContainer" parent="NinePatchRect/VBoxContainer"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+
+[node name="error_label" type="Label" parent="NinePatchRect/VBoxContainer/MarginContainer3"]
+modulate = Color(0.768627, 0.188235, 0, 1)
+self_modulate = Color(0.521569, 0.188235, 0.137255, 1)
+layout_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="loginbutton" type="TextureButton" parent="NinePatchRect/VBoxContainer"]
+custom_minimum_size = Vector2(220, 55)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("4_0fkge")
+texture_pressed = ExtResource("4_0fkge")
+texture_disabled = ExtResource("4_0fkge")
+ignore_texture_size = true
+stretch_mode = 0
+script = SubResource("GDScript_03sxu")
+
+[node name="login" type="Label" parent="NinePatchRect/VBoxContainer/loginbutton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_d4vvj")
+theme_override_font_sizes/font_size = 30
+text = "Login"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Crreateaccount" type="TextureButton" parent="NinePatchRect/VBoxContainer"]
+custom_minimum_size = Vector2(220, 55)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("4_0fkge")
+texture_pressed = ExtResource("4_0fkge")
+texture_disabled = ExtResource("4_0fkge")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("6_gpsu5")
+
+[node name="create" type="Label" parent="NinePatchRect/VBoxContainer/Crreateaccount"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_d4vvj")
+theme_override_font_sizes/font_size = 30
+text = "Create account"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = SubResource("GDScript_24reg")
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
+[connection signal="pressed" from="NinePatchRect/VBoxContainer/loginbutton" to="." method="_on_loginbutton_pressed"]
+[connection signal="pressed" from="NinePatchRect/VBoxContainer/Crreateaccount" to="." method="_on_crreateaccount_pressed"]
+[connection signal="request_completed" from="HTTPRequest" to="." method="_on_http_request_request_completed"]
